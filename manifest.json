@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "测试用例生成器",
+  "version": "1.0",
+  "description": "根据选中文本自动生成测试用例",
+  "permissions": [
+    "activeTab",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://api.moonshot.cn/"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["config.js", "content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [{
+    "resources": ["config.js"],
+    "matches": ["<all_urls>"]
+  }],
+  "action": {
+    "default_title": "测试用例生成器"
+  }
+}
